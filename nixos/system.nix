@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: {
-  # Enable nix flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+  };
 }

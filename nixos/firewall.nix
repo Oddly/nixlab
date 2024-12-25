@@ -10,8 +10,8 @@
   # Open ports in the firewall
   networking.firewall.allowedTCPPorts = [
     22 # SSH
-    80 # HTTP
-    443 # HTTPS
+    # 80 # HTTP
+    # 443 # HTTPS
     # Add any other necessary TCP ports here
     # Example for local development:
     # 3000  # Node.js development server

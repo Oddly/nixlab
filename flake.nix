@@ -7,12 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #agenix.url = "github:ryantm/agenix";
-
-    kmonad = {
-      url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # Uncomment if you plan to use disko for disk management
     disko.url = "github:nix-community/disko";
@@ -38,11 +32,11 @@
         # stylix.nixosModules.stylix
         #agenix.nixosModules.age
         #kmonad.nixosModules.default
-        home-manager.nixosModules.home-manager
+        #home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.titanknis = import ./home-manager/home.nix;
+          #home-manager.useGlobalPkgs = true;
+          #home-manager.useUserPackages = true;
+          #home-manager.users.titanknis = import ./home-manager/home.nix;
 
           # Optionally pass arguments to home.nix
           # home-manager.extraSpecialArgs = {

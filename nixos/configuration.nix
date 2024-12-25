@@ -1,48 +1,58 @@
+# Edit this configuration file to define what should be installed on
+# your system. Help is available in the configuration.nix(5) man page, on
+# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+
+{ config, lib, pkgs, ... }:
+
+
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
-  # Import custom configurations and modules
-  imports = [
-    # --- Disk and Boot Configuration ---
-    ./disko.nix # Disko partitioning setup
-    ./hardware-configuration.nix # Hardware-specific configuration
-    ./boot.nix # LUKS, GRUB, and kernel settings
+  imports =
+    [ # Include the results of the hardware scan.
+      ./boot.nix
+      ./disko.nix
+      ./editor.nix
+      ./firewall.nix
+      ./git.nix
+      ./hardware-configuration.nix
+      ./locale.nix
+      ./network.nix
+      ./nix.nix
+      ./tailscale.nix
+      ./packages.nix
+      ./services.nix
+      ./shell.nix
+      ./system.nix
+      ./users.nix
+      ./zfs.nix
+    ];
 
-    # --- System Configuration ---
-    ./system.nix # General system settings
-    ./services.nix # Services settings (e.g., networking, printing)
-    ./packages.nix # System packages and their configurations
-    ./firewall.nix # Firewall configuration
-    ./shell.nix # Shell configurations
-    ./fonts.nix # fonts configurations
-    ./users.nix # User account definitions
-    ./git.nix # Git-specific configuration
-    ./nvim.nix # Text editor configuration
-    ./tmux.nix # Terminal multiplexer configuration
+  boot = {
+#    kernelParams = [ "zfs.zfs_arc_max=137438953472" ]; # ZFS ARC
+#    supportedFilesystems = [ "zfs" ];
+#    zfs.extraPools = [ "vmpool" "vmpool/vms" ];
+#    zfs.forceImportRoot = false;
+  };
+  
+#  fileSystems."/vmpool/vms" = {
+#    device = "vmpool/vms";
+#    fsType = "zfs";
+#  };
 
-    # --- Networking and Locale ---
-    ./network.nix # Networking configuration (e.g., hostname, NetworkManager)
-    ./locale.nix # Timezone and locale settings
+#  services.zfs = {
+#    autoScrub.enable = true;
+#    autoSnapshot = {
+#      enable = true;
+#      frequent = 4;
+#      hourly = 7;
+#      daily = 6;
+#      weekly = 2;
+#      monthly = 1;
+#    };
+#  };
 
-    # --- Peripheral and Audio Services ---
-    ./printing.nix # CUPS printing service settings
-    ./bluetooth.nix # Bluetooth support configuration
-    ./audio.nix # Audio system configuration (e.g., PipeWire)
+  system.stateVersion = "24.05"; # Did you read the comment?
 
-    # --- Input ---
-    ./input.nix # Input device support (e.g., touchpad)
-    ./keyboard
 
-    # --- Desktop Environment ---
-    ./hyprland.nix # Hyprland window manager configuration
-    # ./plasma.nix # KDE Plasma desktop configuration
-    ./display-manager.nix # Display manager configuration
-    # ./stylix.nix
-
-    # --- Virtual Machine Configuration ---
-    #./vm.nix                          # Virtual machine-specific settings
-  ];
 }
+
+

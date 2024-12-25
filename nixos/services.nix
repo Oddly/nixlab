@@ -5,5 +5,5 @@
   ...
 }: {
   # Disable the OpenSSH daemon
-  services.openssh.enable = false;
+  services.openssh.enable = true;
 }
