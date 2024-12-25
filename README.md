@@ -1,0 +1,2 @@
+# nixhome
+nix-home
