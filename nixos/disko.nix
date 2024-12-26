@@ -46,96 +46,192 @@
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630574237190025384e00000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme1 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019080025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme2 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019150025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme3 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630574237010025384e00000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme4 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019070025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme5 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019110025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme6 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019120025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme7 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019160025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme8 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019140025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme9 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577014330025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme10 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630577019100025384300000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
       nvme11 = {
       	type = "disk";
 	device = "/dev/disk/by-id/nvme-eui.36344630574237180025384e00000001";
 	content = {
-	  type = "zfs";
-	  pool = "vmpool";
+	  type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "ssdpool";
+              };
+            };
+          };
 	};
       };
     };
@@ -172,7 +268,7 @@
       };
     };
     zpool = {
-      vmpool =  {
+      ssdpool =  {
       	type = "zpool";
 	  mode = {
 	    topology = {
@@ -191,12 +287,12 @@
           };
 	  rootFsOptions.compression = "zstd";
 
-	  mountpoint = "/vmpool";
+	  mountpoint = "/ssdpool";
 
 	  datasets = {
 	    vms = {
 	      type = "zfs_fs";
-	      mountpoint = "/vmpool/vms";
+	      mountpoint = "/ssdpool/vms";
 	    };
 	  };
       };
