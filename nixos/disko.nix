@@ -174,31 +174,47 @@
     zpool = {
       vmpool =  {
       	type = "zpool";
-	mode = {
-	  topology = {
-	    type = "topology";
-	    vdev = [
-	      {
-	        mode = "raidz2";
-	        members = [ "nvme0" "nvme1" "nvme2" "nvme3" "nvme4" "nvme5" ];
-	      }
-	      {
-	        mode = "raidz2";
-	        members = [ "nvme6" "nvme7" "nvme8" "nvme9" "nvme10" "nvme11" ];
-	      }
-	    ];
-      	  };
-        };
-	rootFsOptions.compression = "zstd";
+	    mode = {
+	      topology = {
+	        type = "topology";
+	        vdev = [
+	          {
+	            mode = "raidz2";
+	            members = [ "nvme0" "nvme1" "nvme2" "nvme3" "nvme4" "nvme5" ];
+	          }
+	          {
+	            mode = "raidz2";
+	            members = [ "nvme6" "nvme7" "nvme8" "nvme9" "nvme10" "nvme11" ];
+	          }
+	        ];
+        	  };
+            };
+	    rootFsOptions.compression = "zstd";
 
-	mountpoint = "/vmpool";
+	    mountpoint = "/vmpool";
 
-	datasets = {
-	  zfs_fs = {
-	    type = "zfs_fs";
-	    mountpoint = "/vmpool/vms";
-	  };
-	};
+	    datasets = {
+	      vms = {
+	        type = "zfs_fs";
+	        mountpoint = "/vmpool/vms";
+	      };
+	    };
+      };
+    };
+    zpool = {
+      hddpool =  {
+      	type = "zpool";
+	    mode = {
+	    rootFsOptions.compression = "zstd";
+
+	    mountpoint = "/hddpool";
+
+	    datasets = {
+	      backup = {
+	        type = "zfs_fs";
+	        mountpoint = "/hddpool/backup";
+	      };
+	    };
       };
     };
   };
