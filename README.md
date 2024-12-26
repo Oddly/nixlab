@@ -1,2 +1,2 @@
-# nixhome
-nix-home
+# nixlab
+
