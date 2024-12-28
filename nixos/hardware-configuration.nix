@@ -26,7 +26,7 @@
 
   networking = {
     interfaces = {
-      eno1.useDHCP = true;
+      eno1.useDHCP = false;
     };
     useDHCP = false;
   };
